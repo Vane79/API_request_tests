@@ -38,12 +38,10 @@ pet2 = {
     "status": "sold"
 }
 
-variable = "https://petstore.swagger.io/v2/pet"
-
 
 def test_func_put_success_200(var):
     try:
-        response = requests.put(var, json=pet)
+        response = requests.put(var+"pet", json=pet)
         assert response.status_code == 200
         print("exit code 200 on PUT, test PASSED")
     except AssertionError:
@@ -54,7 +52,7 @@ def test_func_put_success_200(var):
 # Это ожидаемое поведение?
 def test_func_put_failure_404(var):
     try:
-        response = requests.put(var, json=pet2)
+        response = requests.put(var+"pet", json=pet2)
         assert response.status_code == 404
         print("exit code 404 on PUT, test PASSED")
     except AssertionError:
@@ -63,7 +61,7 @@ def test_func_put_failure_404(var):
 
 def test_func_put_failure_415(var):
     try:
-        response = requests.put(var, json=None)
+        response = requests.put(var+"pet", json=None)
         assert response.status_code == 415  # unsupported media type
         print("exit code 415 on put, test PASSED")
     except AssertionError:
@@ -71,6 +69,7 @@ def test_func_put_failure_415(var):
 
 
 if __name__ == '__main__':
+    from tests import base_url as variable
     test_func_put_success_200(variable)
     test_func_put_failure_404(variable)
     test_func_put_failure_415(variable)
