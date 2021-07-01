@@ -22,26 +22,28 @@ pet = {
 value = "1"
 inv_value = '0'
 
+variable = "https://petstore.swagger.io/v2/pet"
 
-def test_func_delete_success_200():  # Иногда, по не понятной причине выдает 404
+
+def test_func_delete_success_200(var):  # Иногда, по не понятной причине выдает 404
     try:
-        requests.put("https://petstore.swagger.io/v2/pet/", json=pet)
+        requests.put(var, json=pet)
         response = requests.delete("https://petstore.swagger.io/v2/pet/" + value)
         assert response.status_code == 200
-        print('exit code 200 on DELETE')
+        print('exit code 200 on DELETE, test PASSED')
     except ValueError:
         print("Different exit code on DELETE, test DELETE for exit code 200 *FAILED*")
 
 
-def test_func_delete_failure_404():
+def test_func_delete_failure_404(var):
     try:
-        response = requests.get("https://petstore.swagger.io/v2/pet/" + inv_value)
+        response = requests.get(var + inv_value)
         assert response.status_code == 404
-        print('exit code 404 on DELETE')
+        print('exit code 404 on DELETE, test PASSED')
     except AssertionError:
         print("Different exit code on DELETE, test DELETE for exit code 404 *FAILED*")
 
 
 if __name__ == '__main__':
-    test_func_delete_success_200()
-    test_func_delete_failure_404()
+    test_func_delete_success_200(variable)
+    test_func_delete_failure_404(variable)
