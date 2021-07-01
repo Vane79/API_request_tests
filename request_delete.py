@@ -31,7 +31,7 @@ def test_func_delete_success_200(var):  # Иногда, по непонятно�
         response = requests.delete("https://petstore.swagger.io/v2/pet/" + value)
         assert response.status_code == 200
         print('exit code 200 on DELETE, test PASSED')
-    except ValueError:
+    except AssertionError:
         print("Different exit code on DELETE, test DELETE for exit code 200 *FAILED*")
 
 
