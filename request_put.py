@@ -40,9 +40,12 @@ def test_func_put_success_200(var):
 
 
 def test_func_put_failure_415(var):
-    response = requests.put(var, json=None)
-    assert response.status_code == 415  # unsupported media type
-    print("exit code 415 on POST, test PASSED")
+    try:
+        response = requests.put(var, json=None)
+        assert response.status_code == 415  # unsupported media type
+        print("exit code 415 on put, test PASSED")
+    except ValueError:
+        print("Different exit code on PUT, test PUT for exit code 415 *FAILED*")
 
 
 if __name__ == '__main__':

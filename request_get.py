@@ -12,7 +12,7 @@ def test_func_get_success_200(var):
         assert response.status_code == 200
         print('exit code 200 on GET, test PASSED')
     except AssertionError:
-        print("Different exit code on GET, test GET for exit code 400 *FAILED*")
+        print("Different exit code on GET, test GET for exit code 200 *FAILED*")
 
 
 def test_func_get_failure_400(var):  # пытаюсь ввести неверный аттрибут для поиска, возвращает 200.
