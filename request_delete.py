@@ -25,7 +25,7 @@ inv_value = '0'
 variable = "https://petstore.swagger.io/v2/pet"
 
 
-def test_func_delete_success_200(var):  # Иногда, по не понятной причине выдает 404
+def test_func_delete_success_200(var):  # Иногда, по непонятной причине выдает 404
     try:
         requests.put(var, json=pet)
         response = requests.delete("https://petstore.swagger.io/v2/pet/" + value)
