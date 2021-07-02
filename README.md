@@ -9,3 +9,5 @@
 Пакеты:
 
 requests  для запросов и обработки HTTP
+
+pip install requests
