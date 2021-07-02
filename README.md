@@ -9,4 +9,7 @@
 Пакеты:
 
 pytest   как тестовый фреймворк
+pip install pytest
+
 requests   для запросов и обработки HTTP
+pip install requests
